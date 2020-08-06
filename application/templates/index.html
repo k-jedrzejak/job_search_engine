@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% block content %}
+
+    <div class="site-title text-center my-5">
+        <h1>GitHub Jobs</h1>
+        <h2>Find Job on GitHub</h2>
+
+    </div>
+    <form class="search-form text-center" action="/results" method="POST">
+        <div class="input text">
+            {{ form.technology.label }} {{ form.technology }}
+            {{ form.location.label }} {{ form.location }}
+        </div>
+        <div class="input submit my-5">
+            <input type="submit" value="Find"></div>
+    </form>
+
+{% endblock %}
