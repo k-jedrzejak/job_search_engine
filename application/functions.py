@@ -1,32 +1,26 @@
-from flask import request
+import requests
 import json
 
-# get Data
 
-result = None
-
-
-def getData(description, location):
+def get_data(description, location):
     global result
 
     url = 'https://jobs.github.com/positions.json'
     params = {
-        'desription': description,
+        'description': description,
         'location': location
     }
-    result = request.get(url, params=params)
+    result = requests.get(url, params=params)
     return result
 
 
-# save data  json
-def saveData(description, location):
-    getData(description,location)
-    with open('job_offers.json', 'w') as file:
+def save_data(description, location):
+    get_data(description, location)
+    with open('job_offers.json', 'w', encoding='utf-8') as file:
         file.write(result.text)
 
 
-# rad data json
-def readData(description, location):
-    with open('job_offers.json', 'w') as read_file:
-        load_offers = json.dumb(read_file)
+def read_data():
+    with open('job_offers.json', encoding='utf-8') as read_file:
+        load_offers = json.load(read_file)
         return load_offers

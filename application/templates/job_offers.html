@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% block content %}
+   <div class="searching-for text-center my-5">
+       <div>Chosen technology: {{ description.title() }},<br> location: {{ location.title() }}</div>
+   </div>
+    {% if job |length == 0 %}
+        <div class="not-found text-center">
+            <div>Sorry, we have not found offers in this location</div>
+            <a href="/">Back</a>
+        </div>
+    {% else %}
+
+    <div class="row no-gutters d-flex justify-content-center flex-wrap">
+        {% for j in job %}
+        <div class="job-container col-lg-3 col-12 px-5 py-5 mx-4 my-4">
+            {% if job.company_logo %}
+            <img src="{{ j.company_logo }}" alt="{{ j.title }} logo">
+            {% endif %}
+            <div class="job-title"> {{ j.title }}</div>
+            <div class="job-type">{{ j.type }}</div>
+            <a href="{{ j.url }}" target="_blank" class="job-link" >Apply</a>
+        </div>
+        {% endfor %}
+    </div>
+    {% endif %}
+
+
+{% endblock %}
