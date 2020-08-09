@@ -13,7 +13,7 @@
     <div class="row no-gutters d-flex justify-content-center flex-wrap">
         {% for j in job %}
         <div class="job-container col-lg-3 col-12 px-5 py-5 mx-4 my-4">
-            {% if job.company_logo %}
+            {% if j.company_logo %}
             <img src="{{ j.company_logo }}" alt="{{ j.title }} logo">
             {% endif %}
             <div class="job-title"> {{ j.title }}</div>

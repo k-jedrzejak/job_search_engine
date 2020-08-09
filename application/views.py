@@ -1,12 +1,12 @@
-from application import app
-from .functions import save_data, read_data
 from flask import request, render_template
+from application import app
 from wtforms import Form, validators, TextField
+from .functions import save_data, read_data
 
 
 class Search(Form):
-    technology = TextField('technology', validators=[validators.required()])
-    location = TextField('location')
+    technology = TextField('Technology: ', validators=[validators.required()])
+    location = TextField('Location: ')
 
 
 @app.route('/')
@@ -25,3 +25,5 @@ def search_job():
     all_offers = read_data()
 
     return render_template('job_offers.html', description=description, location=location, job=all_offers)
+
+
