@@ -4,11 +4,11 @@
 
     <form class="search-form text-center" action="/job_offers" method="POST">
         <div class="input text">
-            {{ form.technology.label }} {{ form.technology }}
-            {{ form.location.label }} {{ form.location }}
+            <div class="input-field">{{ form.technology.label }} {{ form.technology }}</div>
+            <div class="input-field">{{ form.location.label }} {{ form.location }}</div>
         </div>
         <div class="input submit my-5">
-            <input type="submit" value="Find"></div>
+            <input type="submit" value="Find" class="btn"></div>
     </form>
 
 {% endblock %}

@@ -6,19 +6,29 @@
     {% if job |length == 0 %}
         <div class="not-found text-center">
             <div>Sorry, we have not found offers in this location</div>
-            <a href="/">Back</a>
+            <a href="/" class="btn">Back</a>
         </div>
     {% else %}
-
+    <div class="text-center">
+        <a href="/" class="btn">Back to search</a>
+    </div>
     <div class="row no-gutters d-flex justify-content-center flex-wrap">
         {% for j in job %}
-        <div class="job-container col-lg-3 col-12 px-5 py-5 mx-4 my-4">
+        <div class="job-container col-lg-3 col-12 px-4 py-4 mx-4 my-4">
+            <div class="logo-box">
             {% if j.company_logo %}
-            <img src="{{ j.company_logo }}" alt="{{ j.title }} logo">
+                <img src="{{ j.company_logo }}" alt="{{ j.title }} logo">
+            {% else %}
+                No logo :(
+                {% endif %}
+            </div>
+            <div class="job-title ellipsis ">{{ j.title }}</div>
+            {% if j.title |length > 23 %}
+            <span class="job-title-pop ">{{ j.title }}</span>
             {% endif %}
-            <div class="job-title"> {{ j.title }}</div>
+
             <div class="job-type">{{ j.type }}</div>
-            <a href="{{ j.url }}" target="_blank" class="job-link" >Apply</a>
+            <a href="{{ j.url }}" target="_blank" class="job-link btn" >Apply</a>
         </div>
         {% endfor %}
     </div>
